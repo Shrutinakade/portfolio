@@ -2,16 +2,17 @@ import React from 'react';
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
 import { TypeAnimation } from 'react-type-animation';
 
+const PDF_FILE_URL='http://localhost:3000/Shruti_Resume.pdf'
 const Home = () => {
 
-    const downloadResume = () => {
-        // Create an anchor element
-        const link = document.createElement('a');
-        link.href = 'H:/React_intern/portfolio/public/'; // Provide the path to your resume file
-        link.download = 'hero.png'; // Specify the file name for download
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+    const downloadResume = (url) => {
+         const fileName =url.split('/').pop();
+         const aTag = document.createElement('a');
+         aTag.href=url
+         aTag.setAttribute("download" ,fileName)
+         document.body.appendChild(aTag)
+         aTag.click();
+         aTag.remove()
     };
 
     return (
@@ -47,7 +48,7 @@ const Home = () => {
                             data-te-ripple-init
                             data-te-ripple-color='light'
                             className='group text-white px-6 py-3 w-fit cursor-pointer rounded-md my-2 flex items-center bg-gradient-to-b from-sky-500'
-                            onClick={downloadResume} // Add onClick event to trigger downloadResume function
+                            onClick={()=>{downloadResume(PDF_FILE_URL)} } // Add onClick event to trigger downloadResume function
                         >
                             Portfolio
                             <span className='group-hover:rotate-90 duration-300'>

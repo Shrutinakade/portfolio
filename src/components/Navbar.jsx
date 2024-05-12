@@ -45,8 +45,8 @@ const Navbar = () => {
                 <div className="pr-4 cursor-pointer" onClick={toggleLightMode}>
                     {lightMode ? <MdNightlight size={30} /> : <LightModeRounded size={30} />}
                 </div>
-                <div className="pr-4 cursor-pointer" onClick={() => setNav(!nav)}>
-                    <FaBars size={30} />
+                <div className="pr-4 z-10 text-gray-500 cursor-pointer" onClick={() => setNav(!nav)}>
+                      {nav ? <FaTimes size={30} /> :<FaBars size={30}/>}
                 </div>
             </div>
 
